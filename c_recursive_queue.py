@@ -33,15 +33,23 @@ class Queue:
 
 
 def initialize() -> Queue:
-    raise NotImplementedError("Queue.initialize() not defined")
+    return Queue()
+    
 
 
 def isEmpty(data: Queue) -> bool:
-    raise NotImplementedError("Queue.isEmpty() not defined")
+    if data.first is None:
+        return True
+    else:
+        return False
 
 
 def enqueue(data: Queue, value: int) -> Queue:
-    raise NotImplementedError("Queue.enqueue() not defined")
+    if data.first is None:
+        return Node(value, None)
+    else:
+        pass
+    
 
 
 def dequeue(data: Queue) -> tuple[Node, Queue]:
