@@ -58,4 +58,3 @@ def clear(data: Queue) -> Queue:
         clear(data.first.next)
     else:
         return data
-    raise NotImplementedError("Queue.clear() not defined")
