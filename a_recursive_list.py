@@ -33,32 +33,56 @@ class List:
 
 
 def initialize() -> List:
-    raise NotImplementedError("List.initialize() not defined")
+    return List()
 
 
 def isEmpty(data: List) -> bool:
-    raise NotImplementedError("List.isEmpty() not defined")
+    if data is None:
+        return True
+    else:
+        return False
 
 
 def addAtIndex(data: List, index: int, value: int) -> List:
-    raise NotImplementedError("List.addAtIndex() not defined")
+    if data is None and index == 0:
+        return Node(value, None)
+    elif index == 0:
+        return Node(value, data)
+    else:
+        return Node(data.value, addAtIndex(data.next, index - 1, value))
 
 
 def removeAtIndex(data: List, index: int) -> tuple[Node, List]:
-    raise NotImplementedError("List.removeAtIndex() not defined")
+    if index == 0:
+        return data.value, data.next
+    else:
+        deleted = removeAtIndex(data.next, index - 1)
+        return deleted[0], Node(data.value, deleted[1])
 
 
 def addToFront(data: List, value: int) -> List:
-    raise NotImplementedError("List.addToFront() not defined")
+    return Node(value, data)
 
 
 def addToBack(data: List, value: int) -> List:
-    raise NotImplementedError("List.addToBack() not defined")
+    return Node(data.value, value)
 
 
 def getElementAtIndex(data: List, index: int) -> Node:
-    raise NotImplementedError("List.getElementAtIndex() not defined")
+    if data is None:
+        raise IndexError
+    if index > len(data) - 1:
+        raise IndexError
+    else:
+        if index == 0:
+            return data.value
+        else:
+            return getElementAtIndex(data.next, index - 1)
 
 
 def clear(data: List) -> List:
-    raise NotImplementedError("List.clear() not defined")
+    if data is not None:
+        return clear(data.next)
+    else:
+        return data
+    

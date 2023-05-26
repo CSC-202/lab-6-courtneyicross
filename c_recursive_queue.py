@@ -45,12 +45,17 @@ def enqueue(data: Queue, value: int) -> Queue:
 
 
 def dequeue(data: Queue) -> tuple[Node, Queue]:
-    raise NotImplementedError("Queue.dequeue() not defined")
+    return data.first, data.first.next
+    
 
 
 def peek(data: Queue) -> Node:
-    raise NotImplementedError("Queue.peek() not defined")
+    return data.first.value
 
 
 def clear(data: Queue) -> Queue:
+    if data is not None:
+        clear(data.first.next)
+    else:
+        return data
     raise NotImplementedError("Queue.clear() not defined")
